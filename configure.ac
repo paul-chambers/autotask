@@ -40,11 +40,11 @@ case "$host" in
 esac
 
 AC_MSG_CHECKING(__attribute__((noreturn)))
-AC_TRY_COMPILE([], [void __attribute__((noreturn)) panic(void);],
-    AC_MSG_RESULT(yes)
-    AC_DEFINE(HAVE_ATTRIBUTE_NORETURN, 1,
-              [Define to 1 if compiler supports __attribute__((noreturn))]),
-    AC_MSG_RESULT(no)
+AC_COMPILE_IFELSE(
+       [AC_LANG_PROGRAM([[]], [[void __attribute__((noreturn)) panic(void);]])],
+       [AC_MSG_RESULT(yes)
+        AC_DEFINE(HAVE_ATTRIBUTE_NORETURN, 1, Define to 1 if compiler supports __attribute__((noreturn)))],
+       [AC_MSG_RESULT(no)]
 )
 dnl Checks for libraries.
 
