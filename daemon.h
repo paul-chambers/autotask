@@ -13,5 +13,8 @@ __attribute__((noreturn))
 #endif
 perr (const char *fmt, ...);
 
+void
+lerr (const char *fmt, ...);
+
 extern int daemon_debug;
 extern int daemon_foreground;

@@ -40,6 +40,7 @@ LIBS		= @LIBS@
 LIBOBJS		= @LIBOBJS@
 INSTALL		= @INSTALL@
 PAMLIB          = @PAMLIB@
+SELINUXLIB      = @SELINUXLIB@
 
 CLONES		= atq atrm
 ATOBJECTS	= at.o panic.o perm.o posixtm.o y.tab.o lex.yy.o
@@ -73,7 +74,7 @@ at: $(ATOBJECTS)
 	$(LN_S) -f at atrm
 
 atd: $(RUNOBJECTS)
-	$(CC) $(LDFLAGS) -o atd $(RUNOBJECTS) $(LIBS) $(PAMLIB)
+	$(CC) $(LDFLAGS) -o atd $(RUNOBJECTS) $(LIBS) $(PAMLIB) $(SELINUXLIB)
 
 y.tab.c y.tab.h: parsetime.y
 	$(YACC) -d parsetime.y

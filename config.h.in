@@ -192,6 +192,9 @@
    <sys/cpustats.h>. */
 #undef UMAX4_3
 
+/* Define if you are building with_selinux */
+#undef WITH_SELINUX
+
 /* Define to 1 if `lex' declares `yytext' as a `char *' by default, not a
    `char[]'. */
 #undef YYTEXT_POINTER

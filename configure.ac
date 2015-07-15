@@ -239,6 +239,14 @@ AC_ARG_WITH(daemon_username,
 )
 AC_SUBST(DAEMON_USERNAME)
 
+AC_ARG_WITH(selinux,
+[ --with-selinux       Define to run with selinux],
+AC_DEFINE(WITH_SELINUX, 1, [Define if you are building with_selinux]),
+)
+AC_CHECK_LIB(selinux, is_selinux_enabled, SELINUXLIB=-lselinux)
+AC_SUBST(SELINUXLIB)
+AC_SUBST(WITH_SELINUX)
+
 AC_MSG_CHECKING(groupname to run under)
 AC_ARG_WITH(daemon_groupname,
 [ --with-daemon_groupname=DAEMON_GROUPNAME	Groupname to run under (default daemon) ],
