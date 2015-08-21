@@ -1,7 +1,8 @@
 Source: at
 Section: admin
 Priority: standard
-Maintainer: Ansgar Burchardt <ansgar@debian.org>
+Maintainer: Jose M Calhariz <jose@calhariz.com>
+Uploaders: Ansgar Burchardt <ansgar@debian.org>
 Standards-Version: 3.9.5
 Build-Depends: debhelper (>= 9), autotools-dev, bison, flex, libpam0g-dev,
  perl (>= 5.10.1), dh-systemd
