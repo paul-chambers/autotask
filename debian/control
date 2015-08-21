@@ -2,19 +2,26 @@ Source: at
 Section: admin
 Priority: standard
 Maintainer: Jose M Calhariz <jose@calhariz.com>
-Uploaders: Ansgar Burchardt <ansgar@debian.org>
+Uploaders: Ansgar Burchardt <ansgar@debian.org>,
 Standards-Version: 3.9.5
-Build-Depends: debhelper (>= 9), autotools-dev, bison, flex, libpam0g-dev,
- perl (>= 5.10.1), dh-systemd
+Build-Depends: autotools-dev,
+               bison,
+               debhelper (>= 9),
+               dh-systemd,
+               flex,
+               libpam0g-dev,
+               perl (>= 5.10.1),
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/at.git
 Vcs-Git: git://anonscm.debian.org/collab-maint/at.git
 
 Package: at
 Architecture: any
 Multi-Arch: foreign
-Depends: ${shlibs:Depends}, ${misc:Depends},
- lsb-base (>= 3.2-14), libpam-runtime (>= 1.0.1-11)
-Recommends: default-mta | mail-transport-agent
+Depends: libpam-runtime (>= 1.0.1-11),
+         lsb-base (>= 3.2-14),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: default-mta | mail-transport-agent,
 Description: Delayed job execution and batch processing
  At and batch read shell commands from standard input
  storing them as a job to be scheduled for execution in the
