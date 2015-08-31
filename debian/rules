@@ -58,7 +58,8 @@ binary-arch: build-stamp
 	dh_install rc etc/init.d
 	mv debian/at/etc/init.d/rc \
 		debian/at/etc/init.d/atd
-	chmod a+x debian/at/etc/init.d/atd
+	chmod 755 debian/at/etc/init.d/atd
+	chmod 644 debian/at/etc/pam.d/atd
 	dh_systemd_enable
 	dh_installinit --name=atd --onlyscripts -- defaults 89 11
 	dh_lintian
