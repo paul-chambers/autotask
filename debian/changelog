@@ -1,13 +1,16 @@
 at (3.1.16-2) experimental; urgency=low
 
-  * New maintainer.
+  * New maintainer (Closes: #675322).
     * Thank you Ansgar Burchardt for maintaining at at Debian.
   * One depend by line for easier diffs and changes.
   * Add lintian overrides for secure files and directories.
   * Bump standards version to 3.9.6, no changes needed.
   * Upload to experimental because of GCC 5 transition.
+  * Current todo list
+  * Apply patch for reproducible builds, thanks Valentin Lorentz, (Closes:
+    #793996)
 
- -- Jose M Calhariz <jose@calhariz.com>  Fri, 21 Aug 2015 23:27:31 +0100
+ -- Jose M Calhariz <jose@calhariz.com>  Mon, 31 Aug 2015 18:36:33 +0100
 
 at (3.1.16-1) unstable; urgency=medium
 
