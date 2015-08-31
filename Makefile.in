@@ -142,7 +142,7 @@ clean:
 	rm -f parsetest parsetime.c lex.yy.c y.tab.c y.tab.h
 
 distclean: clean
-	rm -rf at.1 atd.8 atrun.8 config.cache atrun batch config.h \
+	rm -rf at.1 at.allow.5 atd.8 atrun.8 config.cache atrun batch config.h \
 		config.status Makefile config.log build atd.service
 
 checkin: $(DIST)
