@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(at, 3.1.17)
+AC_INIT(at, 3.1.18)
 AC_CONFIG_SRCDIR(at.c)
 
 AC_PREFIX_DEFAULT(/usr)
