@@ -157,3 +157,16 @@ at 3.1.16 (2014-09-30):
 
   Ansgar Burchardt (1):
         at: only retain variables whose name consists of alphanumerics and underscores
+
+at 3.1.17 (2015-08-31):
+
+  Jose M Calhariz:
+	at.1.in: Document behaviour when using past time, thanks Kelly Price (Closes: #639900).
+	Makefile.in: On distclean remove at.allow.5, auto generated file.
+
+at 3.1.18 (2015-12-06)
+
+  Jose M Calhariz:
+	Add support for SELinux, multiples files
+
+	

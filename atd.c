@@ -83,6 +83,12 @@
 #include "getloadavg.h"
 #endif
 
+#ifdef WITH_SELINUX
+#include <selinux/selinux.h>
+#include <selinux/get_context_list.h>
+int selinux_enabled = 0;
+#endif
+
 /* Macros */
 
 #define BATCH_INTERVAL_DEFAULT 60
@@ -193,6 +199,72 @@ myfork()
 }
 
 #define fork myfork
+#endif
+
+#ifdef WITH_SELINUX
+static int
+set_selinux_context(const char *name, const char *filename) {
+    security_context_t user_context = NULL;
+    security_context_t file_context = NULL;
+    int retval = 0;
+    char *seuser = NULL;
+    char *level = NULL;
+
+    if (getseuserbyname(name, &seuser, &level) == 0) {
+        retval = get_default_context_with_level(seuser, level, NULL, &user_context);
+        free(seuser);
+        free(level);
+        if (retval < 0) {
+            lerr("get_default_context_with_level: couldn't get security context for user %s", name);
+            retval = -1;
+            goto err;
+        }
+    }
+
+    /*
+     * Since crontab files are not directly executed,
+     * crond must ensure that the crontab file has
+     * a context that is appropriate for the context of
+     * the user cron job.  It performs an entrypoint
+     * permission check for this purpose.
+     */
+    if (fgetfilecon(STDIN_FILENO, &file_context) < 0) {
+        lerr("fgetfilecon FAILED %s", filename);
+        retval = -1;
+        goto err;
+    }
+
+    retval = selinux_check_access(user_context, file_context, "file", "entrypoint", NULL);
+    freecon(file_context);
+    if (retval < 0) {
+        lerr("Not allowed to set exec context to %s for user  %s", user_context, name);
+        retval = -1;
+        goto err;
+    }
+    if (setexeccon(user_context) < 0) {
+        lerr("Could not set exec context to %s for user  %s", user_context, name);
+        retval = -1;
+        goto err;
+    }
+err:
+    if (retval < 0 && security_getenforce() != 1)
+        retval = 0;
+    if (user_context)
+        freecon(user_context);
+    return retval;
+}
+
+static int
+selinux_log_callback (int type, const char *fmt, ...)
+{
+    va_list ap;
+
+    va_start(ap, fmt);
+    vsyslog (LOG_ERR, fmt, ap);
+    va_end(ap);
+    return 0;
+}
+
 #endif
 
 static void
@@ -423,6 +495,13 @@ run_file(const char *filename, uid_t uid, gid_t gid)
 	PRIV_START
 
 	    nice((tolower((int) queue) - 'a' + 1) * 2);
+
+#ifdef WITH_SELINUX
+	    if (selinux_enabled > 0) {
+	        if (set_selinux_context(pentry->pw_name, filename) < 0)
+	            perr("SELinux Failed to set context\n");
+	    }
+#endif
 
 	    if (initgroups(pentry->pw_name, pentry->pw_gid))
 		perr("Cannot initialize the supplementary group access list");
@@ -706,6 +785,14 @@ main(int argc, char *argv[])
     struct sigaction act;
     struct passwd *pwe;
     struct group *ge;
+
+#ifdef WITH_SELINUX
+    selinux_enabled=is_selinux_enabled();
+
+    if (selinux_enabled) {
+        selinux_set_callback(SELINUX_CB_LOG, (union selinux_callback) selinux_log_callback);
+    }
+#endif
 
 /* We don't need root privileges all the time; running under uid and gid
  * daemon is fine.

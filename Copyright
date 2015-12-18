@@ -9,6 +9,9 @@ and then taken over by Ryan Murray <rmurray@debian.org>.
 In August 2009 the upstream development and Debian packaging were taken over
 by Ansgar Burchardt <ansgar@debian.org> and Cyril Brulebois <kibi@debian.org>.
 
+In August 2015 the upstream development and Debian packaging were
+taken over by Jose M Calhariz <jose@calhariz.com>
+
 This may be considered the experimental upstream source, and since there
 doesn't seem to be any other upstream source, the only upstream source.
 

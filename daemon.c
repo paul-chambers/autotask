@@ -83,6 +83,22 @@ perr(const char *fmt,...)
 }
 
 void
+lerr(const char *fmt,...)
+{
+    char buf[1024];
+    va_list args;
+
+    va_start(args, fmt);
+    vsnprintf(buf, sizeof(buf), fmt, args);
+    va_end(args);
+
+    if (daemon_debug) {
+	perror(buf);
+    } else
+	syslog(LOG_ERR, "%s: %m", buf);
+}
+
+void
 pabort(const char *fmt,...)
 {
     char buf[1024];

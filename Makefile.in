@@ -40,6 +40,7 @@ LIBS		= @LIBS@
 LIBOBJS		= @LIBOBJS@
 INSTALL		= @INSTALL@
 PAMLIB          = @PAMLIB@
+SELINUXLIB      = @SELINUXLIB@
 
 CLONES		= atq atrm
 ATOBJECTS	= at.o panic.o perm.o posixtm.o y.tab.o lex.yy.o
@@ -73,7 +74,7 @@ at: $(ATOBJECTS)
 	$(LN_S) -f at atrm
 
 atd: $(RUNOBJECTS)
-	$(CC) $(LDFLAGS) -o atd $(RUNOBJECTS) $(LIBS) $(PAMLIB)
+	$(CC) $(LDFLAGS) -o atd $(RUNOBJECTS) $(LIBS) $(PAMLIB) $(SELINUXLIB)
 
 y.tab.c y.tab.h: parsetime.y
 	$(YACC) -d parsetime.y
@@ -142,7 +143,7 @@ clean:
 	rm -f parsetest parsetime.c lex.yy.c y.tab.c y.tab.h
 
 distclean: clean
-	rm -rf at.1 atd.8 atrun.8 config.cache atrun batch config.h \
+	rm -rf at.1 at.allow.5 atd.8 atrun.8 config.cache atrun batch config.h \
 		config.status Makefile config.log build atd.service
 
 checkin: $(DIST)
