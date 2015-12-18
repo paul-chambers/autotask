@@ -10,6 +10,7 @@ Build-Depends: autotools-dev,
                dh-systemd,
                flex,
                libpam0g-dev,
+               libselinux1-dev,
                perl (>= 5.10.1),
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/at.git
 Vcs-Git: git://anonscm.debian.org/collab-maint/at.git
