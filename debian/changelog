@@ -7,14 +7,16 @@ at (3.1.18-1) unstable; urgency=low
   * Bump standards version to 3.9.6, no changes needed.
   * Upload to experimental because of GCC 5 transition.
   * Current todo list.
-  * Apply patch for reproducible builds, thanks Valentin Lorentz, (Closes: #793996).
+  * Apply patch for reproducible builds, thanks Valentin Lorentz,
+    (Closes: #793996).
   * New release 3.1.17
-    * Document behaviour when using past time, thanks Kelly Price (Closes: #639900).
+    * Document behaviour when using past time, thanks Kelly Price
+      (Closes: #639900).
     * Makefile.in: On distclean remove at.allow.5, auto generated file.
   * New release 3.1.18
     * Add SELinux support to run jobs in the proper domain.
 
- -- Jose M Calhariz <jose@calhariz.com>  Fri, 18 Dec 2015 22:29:49 +0000
+ -- Jose M Calhariz <jose@calhariz.com>  Fri, 18 Dec 2015 22:33:29 +0000
 
 at (3.1.16-1) unstable; urgency=medium
 
