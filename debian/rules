@@ -2,12 +2,18 @@
 
 export DEB_BUILD_MAINT_OPTIONS=hardening=+pie,+bindnow
 
+ifeq ($(DEB_HOST_ARCH_OS),linux)
+  WITH_SELINUX=--with-selinux
+else
+  WITH_SELINUX=--without-selinux
+endif
+
 confflags = --prefix=/usr --with-loadavg_mx=1.5 \
             --with-jobdir=/var/spool/cron/atjobs \
             --with-atspool=/var/spool/cron/atspool \
             --with-systemdsystemunitdir=/lib/systemd/system \
-            SENDMAIL=/usr/sbin/sendmail \
-	    --with-selinux
+	    $(WITH_SELINUX) \
+            SENDMAIL=/usr/sbin/sendmail
 
 build: build-arch build-indep
 build-arch: build-stamp

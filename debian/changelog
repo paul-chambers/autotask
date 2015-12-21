@@ -1,5 +1,7 @@
 at (3.1.18-1) unstable; urgency=low
 
+  * Team Upload.
+  [ Jose M Calhariz ]
   * New maintainer (Closes: #675322).
     * Thank you Ansgar Burchardt for maintaining at at Debian.
   * One depend by line for easier diffs and changes.
@@ -16,7 +18,10 @@ at (3.1.18-1) unstable; urgency=low
   * New release 3.1.18
     * Add SELinux support to run jobs in the proper domain.
 
- -- Jose M Calhariz <jose@calhariz.com>  Fri, 18 Dec 2015 22:33:29 +0000
+  [ Laurent Bigonville ]
+  * Do not try to build SELinux support on !linux architectures
+
+ -- Laurent Bigonville <bigon@debian.org>  Mon, 21 Dec 2015 14:25:43 +0100
 
 at (3.1.16-1) unstable; urgency=medium
 
