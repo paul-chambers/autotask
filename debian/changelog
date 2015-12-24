@@ -16,7 +16,7 @@ at (3.1.18-1) unstable; urgency=low
       (Closes: #639900).
     * Makefile.in: On distclean remove at.allow.5, auto generated file.
   * New release 3.1.18
-    * Add SELinux support to run jobs in the proper domain.
+    * Add SELinux support to run jobs in the proper domain (Closes: #510466).
 
   [ Laurent Bigonville ]
   * Do not try to build SELinux support on !linux architectures

@@ -5,10 +5,6 @@
 Tricky request.  In a superficial analyze it may have security
 implications with shell shock.
 
-*** 510466
-Request to support SELinux.  Who can review the patch for me?  Maybe
-Fedora have a working patch and in production.
-
 *** 792040
 Does at supports seconds?
 
