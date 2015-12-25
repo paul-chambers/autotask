@@ -1,3 +1,12 @@
+at (3.1.18-2) unstable; urgency=medium
+
+  * Team upload.
+  * debian/rules: Do not pass the --without-selinux flag on !linux
+    architectures, the configure is a little bit fragile and do not cope well
+    with it. This should fix the FTBFS on these architectures.
+
+ -- Laurent Bigonville <bigon@debian.org>  Fri, 25 Dec 2015 10:44:01 +0100
+
 at (3.1.18-1) unstable; urgency=low
 
   * Team Upload.

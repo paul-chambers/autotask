@@ -4,8 +4,6 @@ export DEB_BUILD_MAINT_OPTIONS=hardening=+pie,+bindnow
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
   WITH_SELINUX=--with-selinux
-else
-  WITH_SELINUX=--without-selinux
 endif
 
 confflags = --prefix=/usr --with-loadavg_mx=1.5 \
