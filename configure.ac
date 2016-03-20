@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(at, 3.1.18)
+AC_INIT(at, 3.1.19)
 AC_CONFIG_SRCDIR(at.c)
 
 AC_PREFIX_DEFAULT(/usr)
@@ -240,10 +240,21 @@ AC_ARG_WITH(daemon_username,
 AC_SUBST(DAEMON_USERNAME)
 
 AC_ARG_WITH(selinux,
-[ --with-selinux       Define to run with selinux],
-AC_DEFINE(WITH_SELINUX, 1, [Define if you are building with_selinux]),
-)
-AC_CHECK_LIB(selinux, is_selinux_enabled, SELINUXLIB=-lselinux)
+[ --with-selinux       Define to run with selinux (default=check)],
+[],
+[with_selinux=check])
+
+if test "x$with_selinux" != xno; then
+  AC_CHECK_LIB([selinux], [is_selinux_enabled],
+    [SELINUXLIB=-lselinux
+     AC_DEFINE(WITH_SELINUX, 1, [Define if you are building with_selinux])
+    ],
+    [if test "x$with_selinux" != xcheck; then
+       AC_MSG_FAILURE([--with-selinux is given, but test for selinux failed $with_selinux])
+     fi
+    ]
+  )
+fi
 AC_SUBST(SELINUXLIB)
 AC_SUBST(WITH_SELINUX)
 
