@@ -495,6 +495,9 @@ writefile(time_t runtimer, char queue)
     fprintf(fp, "\n");
     if (ferror(fp))
 	panic("Output error");
+    fflush(fp);
+    if (ferror(fp))
+	panic("Output error");
 
     if (ferror(stdin))
 	panic("Input error");
