@@ -1,3 +1,11 @@
+at (3.1.19~wip-1) UNRELEASED; urgency=low
+
+  * Add option b to getopt, (Closes: #812972).
+  * Comment a possible broken code, (Closes: #818508).
+  * Add a fflush to catch more errors during writes, (Closes: #801186).
+
+ -- Jose M Calhariz <jose@calhariz.com>  Mon, 27 Jun 2016 16:53:15 +0100
+
 at (3.1.18-2) unstable; urgency=medium
 
   * Team upload.
