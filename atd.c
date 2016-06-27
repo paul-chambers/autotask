@@ -673,10 +673,16 @@ run_loop()
 
 	/* Skip lock files */
 	if (queue == '=') {
-	    if ((buf.st_nlink == 1) && (run_time + CHECK_INTERVAL <= now)) {
-		/* Remove stale lockfile FIXME: lock the lockfile, if you fail, it's still in use. */
-		unlink(dirent->d_name);
-	    }
+            /* FIXME: calhariz */
+            /* I think the following code is broken, but commenting
+               may haven unknow side effects.  Make a release and see
+               in the wild how it works. For more information see:
+               https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=818508/*
+
+	    /* if ((buf.st_nlink == 1) && (run_time + CHECK_INTERVAL <= now)) { */
+	    /*     /\* Remove stale lockfile FIXME: lock the lockfile, if you fail, it's still in use. *\/ */
+	    /*     unlink(dirent->d_name); */
+	    /* } */
 	    continue;
 	}
 	/* Skip any other file types which may have been invented in
