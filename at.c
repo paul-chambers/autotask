@@ -746,7 +746,7 @@ main(int argc, char **argv)
     char *pgm;
 
     int program = AT;		/* our default program */
-    char *options = "q:f:MmvlrdhVct:";	/* default options for at */
+    char *options = "q:f:MmbvlrdhVct:";	/* default options for at */
     int disp_version = 0;
     time_t timer = 0;
     struct passwd *pwe;
