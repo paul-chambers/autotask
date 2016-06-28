@@ -12,8 +12,10 @@ Build-Depends: autotools-dev,
                libpam0g-dev,
                libselinux1-dev [linux-any],
                perl (>= 5.10.1),
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/at.git
-Vcs-Git: git://anonscm.debian.org/collab-maint/at.git
+Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/at.git
+Vcs-Git: https://anonscm.debian.org/collab-maint/at.git
+Homepage: http://blog.calhariz.com
+
 
 Package: at
 Architecture: any
