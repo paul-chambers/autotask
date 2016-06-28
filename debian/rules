@@ -1,11 +1,5 @@
 #!/usr/bin/make -f
 
-PACKNAME=$(shell dh_listpackages)
-SOURCENAME=$(shell dpkg-parsechangelog | grep "Source:" | cut -d ' ' -f 2)
-DEBVER=$(shell dpkg-parsechangelog | grep "Version:" | cut -d ' ' -f 2)
-VER=$(shell dpkg-parsechangelog | grep "Version:" | cut -d ' ' -f 2 | cut -f 1 -d -)
-RELTAR=$(SOURCENAME)-$(VER).orig.tar.gz
-
 export DEB_BUILD_MAINT_OPTIONS=hardening=+pie,+bindnow
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
@@ -86,13 +80,5 @@ binary-arch: build-stamp
 	dh_builddeb -- -Zxz
 
 binary: binary-indep binary-arch
-
-dist: clean
-	[ ! -e $(SOURCENAME)-$(VER) ] || ( echo "Dir $(SOURCENAME)-$(VER) exist, aborting" ; false )
-	[ ! -e ../$(RELTAR) ] || ( echo "Release file $(RELTAR) exist, aborting" ; false )
-	mkdir ../$(SOURCENAME)-$(VER)
-	fakeroot tar --exclude=debian --exclude=.git -cf - . | tar -C ../$(SOURCENAME)-$(VER) -x
-	GZIP=-9 fakeroot tar -C .. -czf ../$(RELTAR) $(SOURCENAME)-$(VER)
-	rm -r ../$(SOURCENAME)-$(VER)
 
 .PHONY: binary binary-arch binary-indep clean
