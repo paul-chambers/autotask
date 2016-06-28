@@ -9,7 +9,7 @@ RELTAR=${SOURCENAME}_$VER.orig.tar.gz
 echo $PACKNAME $SOURCENAME $VER
 echo $RELTAR
 
-[ ! -e $SOURCENAME-$VER ] || ( echo "Dir $SOURCENAME-$VER exist, aborting" ; exit 1 )
+[ ! -e ../$SOURCENAME-$VER ] || ( echo "Dir $SOURCENAME-$VER exist, aborting" ; exit 1 )
 [ ! -e ../$RELTAR ] || ( echo "Release file $RELTAR exist, aborting" ; exit 2 )
 mkdir ../$SOURCENAME-$VER
 fakeroot tar --exclude=debian --exclude=.git -cf - . | tar -C ../$SOURCENAME-$VER -x
