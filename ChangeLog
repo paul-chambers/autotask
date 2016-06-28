@@ -169,4 +169,8 @@ at 3.1.18 (2015-12-06)
   Jose M Calhariz:
 	Add support for SELinux, multiples files
 
-	
+at 3.1.19 (2016-03-20)
+  Jose M Calhariz:
+	Fix configure handling of flag --without-selinux.
+
+Last entry on this file follow debian/changelog.
