@@ -4,8 +4,11 @@ at (3.1.20-1) unstable; urgency=low
     * Add option b to getopt, (Closes: #812972).
     * Comment a possible broken code, (Closes: #818508).
     * Add a fflush to catch more errors during writes, (Closes: #801186).
+  * Bump Standards-Version to 3.9.8, no changes needed.
+  * Fix a typo in parsetime.y.
+  * Prepare for future hardening flags.
 
- -- Jose M Calhariz <jose@calhariz.com>  Tue, 28 Jun 2016 19:47:27 +0100
+ -- Jose M Calhariz <jose@calhariz.com>  Wed, 29 Jun 2016 10:13:14 +0100
 
 at (3.1.19-1) UNRELEASED; urgency=low
 
