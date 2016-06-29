@@ -1,3 +1,5 @@
+Subject: Fix typo about hyphenated.
+From: Jose M Calhariz <jose@calhariz.com>
 Index: at.git/parsetime.y
 ===================================================================
 --- at.git.orig/parsetime.y	2015-08-21 23:09:22.998020411 +0100
