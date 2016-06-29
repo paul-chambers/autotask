@@ -1,13 +1,12 @@
 at (3.1.20-1) unstable; urgency=low
 
-  * New upstream release 3.1.19:
-    * Fix configure handling of flag --without-selinux.
   * New release 3.1.20:
     * Add option b to getopt, (Closes: #812972).
     * Comment a possible broken code, (Closes: #818508).
     * Add a fflush to catch more errors during writes, (Closes: #801186).
+  * New upstream release 3.1.19:
+    * Fix configure handling of flag --without-selinux.
   * Bump Standards-Version to 3.9.8, no changes needed.
-  * Fix a typo in parsetime.y.
   * Prepare for future hardening flags.
   * Bump source/format to 3.0 (quilt).
   * Update TODO.
@@ -15,9 +14,11 @@ at (3.1.20-1) unstable; urgency=low
   * Refresh debian/copyright.
   * Fully personalize debian/gbp.conf.
   * Create a proper watch file, using git mode because I do not know better.
-  * Accept Ubuntu patch for pam.conf.
+  * Patches for a future version
+    * Fix a typo in parsetime.y.
+    * Accept Ubuntu patch for pam.conf.
 
- -- Jose M Calhariz <jose@calhariz.com>  Wed, 29 Jun 2016 22:01:43 +0100
+ -- Jose M Calhariz <jose@calhariz.com>  Wed, 29 Jun 2016 22:28:42 +0100
 
 at (3.1.18-2) unstable; urgency=medium
 
