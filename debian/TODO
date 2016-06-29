@@ -30,3 +30,5 @@ TLDR
 ** Analyze the requests for changes in the Debian package
 ** Close old bugs
 ** Document the old bugs on manpage
+
+* Read about autotools and create Makefile.am
