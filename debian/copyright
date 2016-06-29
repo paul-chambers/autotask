@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: at
-Source: git://anonscm.debian.org/collab-maint/at.git
+Source: http://blog.calhariz.com
 Comment: This package was debianized by its author Thomas Koenig
  <ig25@rz.uni-karlsruhe.de>, taken over and re-packaged first by Martin
  Schulze <joey@debian.org> and then by Siggy Brentrup <bsb@winnegan.de>,
@@ -9,6 +9,9 @@ Comment: This package was debianized by its author Thomas Koenig
  In August 2009 the upstream development and Debian packaging were taken over
  by Ansgar Burchardt <ansgar@debian.org> and Cyril Brulebois <kibi@debian.org>.
  .
+ In August 2015 the upstream development and Debian packaging were taken over
+ by Jose M Calhariz <jose@calhariz.com>.
+ .
  This may be considered the experimental upstream source, and since there
  doesn't seem to be any other upstream source, the only upstream source.
 
@@ -16,6 +19,10 @@ Files: *
 Copyright: 1993-1997,  Thomas Koenig <ig25@rz.uni-karlsruhe.de>
            1993,       David Parsons
            2002, 2005, Ryan Murray <rmurray@debian.org>
+           2009        Cyril Brulebois <kibi@debian.org>
+           2009-2014,  Ansgar Burchardt <ansgar@debian.org>
+           2013,       Prach Pongpanich <prachpub@gmail.com>
+           2015-2016,  Jose M Calhariz <jose@calhariz.com>
 License: GPL-2+
 
 Files: getloadavg.c
