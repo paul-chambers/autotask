@@ -6,21 +6,17 @@ ifeq ($(DEB_HOST_ARCH_OS),linux)
   WITH_SELINUX=--with-selinux
 endif
 
-confflags = --prefix=/usr --with-loadavg_mx=1.5 \
+confflags = --with-loadavg_mx=1.5 \
             --with-jobdir=/var/spool/cron/atjobs \
             --with-atspool=/var/spool/cron/atspool \
             --with-systemdsystemunitdir=/lib/systemd/system \
-	    $(WITH_SELINUX) \
+            $(WITH_SELINUX) \
             SENDMAIL=/usr/sbin/sendmail
 
 build: build-arch build-indep
 build-arch: build-stamp
 build-stamp:
-	[ -f config.sub.ori ] || mv config.sub config.sub.ori
-	[ -f config.guess.ori ] || mv config.guess config.guess.ori
-	ln -sf /usr/share/misc/config.sub .
-	ln -sf /usr/share/misc/config.guess .
-
+	dh_update_autotools_config
 	dh_auto_configure -- $(confflags)
 	dh_auto_build
 	dh_auto_test
@@ -31,8 +27,6 @@ build-indep:
 
 clean:
 	[ ! -f Makefile ] || $(MAKE) distclean
-	[ ! -f config.sub.ori ] || mv -f config.sub.ori config.sub
-	[ ! -f config.guess.ori ] || mv -f config.guess.ori config.guess
 	dh_clean
 
 binary-indep:
