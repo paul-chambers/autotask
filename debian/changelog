@@ -1,3 +1,10 @@
+at (3.1.20-2) UNRELEASED; urgency=low
+
+  * Use dh_update_autotools_config.
+  * dh_builddeb use xz as default compressor, no need to force it.
+
+ -- Jose M Calhariz <jose@calhariz.com>  Thu, 30 Jun 2016 14:08:09 +0100
+
 at (3.1.20-1) unstable; urgency=low
 
   * New release 3.1.20:
