@@ -1,3 +1,10 @@
+at (3.1.20-3) unstable; urgency=medium
+
+  * New version, because the previous one was tagged in error and remote
+    repository does not allow to remove tags.
+
+ -- Jose M Calhariz <jose@calhariz.com>  Thu, 08 Dec 2016 19:21:58 +0000
+
 at (3.1.20-2) UNRELEASED; urgency=low
 
   * Use dh_update_autotools_config.
