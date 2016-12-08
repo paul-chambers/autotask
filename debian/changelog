@@ -1,10 +1,10 @@
-at (3.1.20-2) UNRELEASED; urgency=low
+at (3.1.20-2) unstable; urgency=low
 
   * Use dh_update_autotools_config.
   * dh_builddeb use xz as default compressor, no need to force it.
   * Add Build-Depend libfl-dev, (Closes: #846413).
 
- -- Jose M Calhariz <jose@calhariz.com>  Tue, 06 Dec 2016 19:27:45 +0000
+ -- Jose M Calhariz <jose@calhariz.com>  Thu, 08 Dec 2016 19:08:21 +0000
 
 at (3.1.20-1) unstable; urgency=low
 
