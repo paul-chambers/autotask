@@ -1,3 +1,9 @@
+at (3.1.20-5) unstable; urgency=medium
+
+  * Previous build was rejected because of wrong orig.tar.gz
+
+ -- Jose M Calhariz <calhariz@debian.org>  Sun, 22 Apr 2018 18:43:25 +0100
+
 at (3.1.20-4) unstable; urgency=medium
 
   * Acknowledge the NMU and incorporated the changes.
