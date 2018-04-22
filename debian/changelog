@@ -1,8 +1,10 @@
-at (3.1.20-4) UNRELEASED; urgency=medium
+at (3.1.20-4) unstable; urgency=medium
 
   * Acknowledge the NMU and incorporated the changes.
-  
- -- Jose M Calhariz <calhariz@debian.org>  Sun, 22 Apr 2018 11:47:54 +0100
+  * Updated email of Maintainer.
+  * Move repository to salsa.debian.org.
+
+ -- Jose M Calhariz <calhariz@debian.org>  Sun, 22 Apr 2018 12:57:48 +0100
 
 at (3.1.20-3.1) unstable; urgency=medium
 
