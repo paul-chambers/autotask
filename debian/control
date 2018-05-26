@@ -13,8 +13,8 @@ Build-Depends: autotools-dev,
                libpam0g-dev,
                libselinux1-dev [linux-any],
                perl:any (>= 5.10.1),
-Vcs-Browser: https://salsa.debian.org/debian/amanda
-Vcs-Git: https://salsa.debian.org/debian/amanda.git -b debian
+Vcs-Browser: https://salsa.debian.org/debian/at
+Vcs-Git: https://salsa.debian.org/debian/at.git -b debian
 Homepage: http://blog.calhariz.com
 
 
