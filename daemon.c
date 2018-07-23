@@ -205,7 +205,7 @@ daemon_setup()
      * want to keep the file descriptor in case of an exec().
      */
     fflush(fp);
-    fcntl(fd, F_SETFD, (long) 1);
+    fcntl(fd, F_SETFD, FD_CLOEXEC);
     PRIV_END
 
     return;
