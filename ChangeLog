@@ -185,3 +185,6 @@ at 3.1.21
 
     885891-at__stale_batchjobs_after_reboot
 	Remove stale at jobs after a boot.
+
+    897669-897670-Some_fixes_in_the_manuals
+	Fix some warnings in manpages at.1 and atd.8
