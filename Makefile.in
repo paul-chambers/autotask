@@ -15,6 +15,7 @@ man8dir		= $(mandir)/man8
 docdir		= $(prefix)/doc
 atdocdir	= $(docdir)/at
 etcdir		= @ETCDIR@
+atjobdir	= @ATJBD@
 systemdsystemunitdir = @systemdsystemunitdir@
 
 DAEMON_USERNAME	= @DAEMON_USERNAME@
@@ -83,7 +84,7 @@ lex.yy.c: parsetime.l
 	$(LEX) -i parsetime.l
 
 atd.service: atd.service.in
-	sed -e 's![@]sbindir[@]!$(sbindir)!g' < $< > $@
+	cat $< | sed -e 's![@]sbindir[@]!$(sbindir)!g' | sed -e 's![@]atjobdir[@]!$(atjobdir)!g' > $@
 
 atrun: atrun.in
 	configure
