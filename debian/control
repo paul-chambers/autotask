@@ -1,0 +1,36 @@
+Source: at
+Section: admin
+Priority: standard
+Maintainer: Jose M Calhariz <calhariz@debian.org>
+Uploaders: Ansgar Burchardt <ansgar@debian.org>,
+Standards-Version: 3.9.8
+Build-Depends: autotools-dev,
+               bison,
+               debhelper (>= 9.20160114),
+               dh-systemd,
+               flex,
+               libfl-dev,
+               libpam0g-dev,
+               libselinux1-dev [linux-any],
+               perl:any (>= 5.10.1),
+Vcs-Browser: https://salsa.debian.org/debian/at
+Vcs-Git: https://salsa.debian.org/debian/at.git -b debian
+Homepage: http://blog.calhariz.com
+
+
+Package: at
+Architecture: any
+Multi-Arch: foreign
+Depends: libpam-runtime (>= 1.0.1-11),
+         lsb-base (>= 3.2-14),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: default-mta | mail-transport-agent,
+Description: Delayed job execution and batch processing
+ At and batch read shell commands from standard input
+ storing them as a job to be scheduled for execution in the
+ future.
+ .
+ Use
+  at    to run the job at a specified time
+  batch to run the job when system load levels permit

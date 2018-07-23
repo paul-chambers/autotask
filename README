@@ -28,15 +28,6 @@ Bug reports to:
 If at all possible, I'd appreciate you telling me which version you
 found a bug in; run at -V to find out which one.
 
-The Homepage and place for news is at:
-        http://blog.calhariz.com/tag/at
-
-The latest source code and old relases are available at the git repository:
-        https://anonscm.debian.org/git/collab-maint/at.git/
-
-If you need to contact the developer of the software please use:
-        jose (at) calhariz.com
-
 If you try to use at(1) on a system which does not support setreuid(2),
 i.e. if you get an error whch looks vaguely like
 

@@ -173,21 +173,4 @@ at 3.1.19 (2016-03-20)
   Jose M Calhariz:
 	Fix configure handling of flag --without-selinux.
 
-(...)
-
-at 3.1.21
-  Jose M Calhariz:
-    832368-Using_of_the_meaningless_fcntl
-	Fix call of fcntl by replacing (long) 1 with FD_CLOEXEC
-
-    892819-at__improvements_to_atd.service
-	Improve atd.service, see bug report 892819
-
-    885891-at__stale_batchjobs_after_reboot
-	Remove stale at jobs after a boot.
-
-    897669-897670-Some_fixes_in_the_manuals
-	Fix some warnings in manpages at.1 and atd.8
-
-    883730-Remove_invalid_email_from_man_page
-	Remove invalid email from man pages.
+Last entry on this file follow debian/changelog.

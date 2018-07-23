@@ -193,7 +193,7 @@ date            : month_name day_number
 
 			yearspec = 1;
 			if (sscanf($1, "%d %*c %d %*c %d", &ynum, &mnum, &dnum) != 3) {
-			    yyerror("Error in hyphenated date");
+			    yyerror("Error in hypenated date");
 			    YYERROR;
 			}
 
