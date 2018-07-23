@@ -1,0 +1,4 @@
+# Debian is upstream for this package.
+version=4
+opts="mode=git" https://anonscm.debian.org/git/collab-maint/at.git \
+refs/tags/upstream/([\d\.]+) debian uupdate
