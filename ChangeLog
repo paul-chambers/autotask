@@ -173,4 +173,9 @@ at 3.1.19 (2016-03-20)
   Jose M Calhariz:
 	Fix configure handling of flag --without-selinux.
 
-Last entry on this file follow debian/changelog.
+(...)
+
+at 3.1.21
+  Jose M Calhariz:
+    832368-Using_of_the_meaningless_fcntl
+	Fix call of fcntl by replacing (long) 1 with FD_CLOEXEC
