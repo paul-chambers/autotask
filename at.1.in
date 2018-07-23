@@ -307,4 +307,4 @@ If this is the case for your site, you might want to consider another
 batch system, such as
 .BR nqs .
 .SH AUTHOR
-At was mostly written by Thomas Koenig, ig25@rz.uni-karlsruhe.de.
+At was mostly written by Thomas Koenig.
