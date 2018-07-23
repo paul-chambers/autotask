@@ -1,10 +1,13 @@
 [Unit]
 Description=Deferred execution scheduler
 Documentation=man:atd(8)
+After=remote-fs.target nss-user-lookup.target
 
 [Service]
 ExecStart=@sbindir@/atd -f
 IgnoreSIGPIPE=false
+KillMode=process
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
