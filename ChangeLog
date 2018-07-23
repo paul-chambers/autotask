@@ -182,3 +182,6 @@ at 3.1.21
 
     892819-at__improvements_to_atd.service
 	Improve atd.service, see bug report 892819
+
+    885891-at__stale_batchjobs_after_reboot
+	Remove stale at jobs after a boot.
