@@ -1,4 +1,4 @@
-at (3.1.23-1~WIP) UNRELEASED; urgency=medium
+at (3.1.23-1) unstable; urgency=medium
 
   * New release 3.1.23:
     - Finished the release script.
@@ -10,6 +10,8 @@ at (3.1.23-1~WIP) UNRELEASED; urgency=medium
     - On reboot remove stale jobs (Closes: #885891).
     - Some fixes on the manual pages (Closes: #897669), (Closes: #897670).
     - Remove no longer valid email from manpages (Closes: #883730).
+    
+  * Drop patches accepted by upstream.
 
  -- Jose M Calhariz <calhariz@debian.org>  Tue, 24 Jul 2018 10:17:21 +0100
 
