@@ -175,7 +175,7 @@ at 3.1.19 (2016-03-20)
 
 (...)
 
-at 3.1.21
+at 3.1.21 (2018-07-23):
   Jose M Calhariz:
     832368-Using_of_the_meaningless_fcntl
 	Fix call of fcntl by replacing (long) 1 with FD_CLOEXEC
@@ -191,3 +191,7 @@ at 3.1.21
 
     883730-Remove_invalid_email_from_man_page
 	Remove invalid email from man pages.
+
+at 3.1.22
+	Jose M Calhariz:
+	
