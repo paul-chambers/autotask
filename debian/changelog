@@ -1,3 +1,14 @@
+at (3.1.21-1~WIP) UNRELEASED; urgency=medium
+
+  * New release 3.1.21:
+    - Fix call to fcntl (Closes: #832368).
+    - Improvements to ayd.service (Closes: #892819).
+    - On reboot remove stale jobs (Closes: #885891).
+    - Some fixes on the manual pages (Closes: #897669), (Closes: #897670).
+    - Remove no longer valid email from manpages (Closes: #883730).
+
+ -- Jose M Calhariz <calhariz@debian.org>  Tue, 24 Jul 2018 10:17:21 +0100
+
 at (3.1.20-6) unstable; urgency=medium
 
   * Fix Vcs-* fields
