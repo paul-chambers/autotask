@@ -192,6 +192,10 @@ at 3.1.21 (2018-07-23):
     883730-Remove_invalid_email_from_man_page
 	Remove invalid email from man pages.
 
-at 3.1.22
-	Jose M Calhariz:
-	
+at 3.1.22 (2018-07-24):
+  Jose M Calhariz:
+	Draft of a release script
+
+at 3.1.23 (2018-07-24):
+  Jose M Calhariz
+	Finalised script to release software.
