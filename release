@@ -1,11 +1,13 @@
 #!/bin/bash
 
-echo -n "Going to release version:"
-grep AC_INIT configure.ac | cut -f 2 -d , | tr -d ")"
+VERSION=$(grep AC_INIT configure.ac | cut -f 2 -d , | tr -d ")" | tr -d " ")
+echo "Going to release version: $VERSION"
 echo "Press enter to continue:"
 read enter
 autoconf
 if ! git diff --exit-code ; then
+    echo
     echo "Changes present, please commit before continue"
     exit 1
 fi
+git tag -u $DEBSIGN_KEYID upstream/$VERSION
