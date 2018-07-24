@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo -n "Going to release version:"
+grep AC_INIT configure.ac | cut -f 2 -d , | tr -d ")"
+echo "Press enter to continue:"
+read enter
+autoconf
+if ! git diff --exit-code ; then
+    echo "Changes present, please commit before continue"
+    exit 1
+fi
