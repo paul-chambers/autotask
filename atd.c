@@ -677,7 +677,7 @@ run_loop()
             /* I think the following code is broken, but commenting it
                may cause unknow side effects.  Make a release and see
                in the wild how it works. For more information see:
-               https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=818508/*
+               https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=818508 */
 
 	    /* if ((buf.st_nlink == 1) && (run_time + CHECK_INTERVAL <= now)) { */
 	    /*     /\* Remove stale lockfile FIXME: lock the lockfile, if you fail, it's still in use. *\/ */
