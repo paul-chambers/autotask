@@ -674,8 +674,8 @@ run_loop()
 	/* Skip lock files */
 	if (queue == '=') {
             /* FIXME: calhariz */
-            /* I think the following code is broken, but commenting
-               may haven unknow side effects.  Make a release and see
+            /* I think the following code is broken, but commenting it
+               may cause unknow side effects.  Make a release and see
                in the wild how it works. For more information see:
                https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=818508/*
 
