@@ -4,6 +4,7 @@
 #include <time.h>
 #include "y.tab.h"
 #include "parsetime.h"
+#include "config.h"
 
 char *last_token = NULL;
 char **my_argv;
