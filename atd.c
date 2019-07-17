@@ -494,7 +494,7 @@ run_file(const char *filename, uid_t uid, gid_t gid)
 
 	PRIV_START
 
-	    nice((tolower((int) queue) - 'a' + 1) * 2);
+	    nice((tolower((int) queue) - 'a') * 2);
 
 #ifdef WITH_SELINUX
 	    if (selinux_enabled > 0) {
