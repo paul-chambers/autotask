@@ -479,6 +479,11 @@ writefile(time_t runtimer, char queue)
 
     istty = isatty(fileno(stdin));
     if (istty) {
+	runtime = localtime(&runtimer);
+
+	strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
+	fprintf(stderr, "job %ld at %s\n", jobno, timestr);
+
 	fprintf(stderr, "at> ");
 	fflush(stderr);
     }
