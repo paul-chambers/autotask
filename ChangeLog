@@ -203,3 +203,4 @@ at 3.1.23 (2018-07-24):
 at 3.1.24~WIP
   Jose M Calhariz
 	Print time of new job before the input of the commands, Closes #863045
+        Correctly handle DST when specifying a UTC time. Closes #364975
