@@ -479,6 +479,11 @@ writefile(time_t runtimer, char queue)
 
     istty = isatty(fileno(stdin));
     if (istty) {
+	runtime = localtime(&runtimer);
+
+	strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
+	fprintf(stderr, "at %s\n", timestr);
+
 	fprintf(stderr, "at> ");
 	fflush(stderr);
     }
@@ -512,6 +517,7 @@ writefile(time_t runtimer, char queue)
 
     close(fd2);
 
+    /* This line maybe superfluous after commit 11cb731bb560eb7bff4889c5528d5f776606b0d3 */
     runtime = localtime(&runtimer);
 
     strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
