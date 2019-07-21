@@ -204,3 +204,5 @@ at 3.1.24~WIP
   Jose M Calhariz
 	Print time of new job before the input of the commands, Closes #863045
 	Do not drop seconds on -t option, Closes #792040
+	Start using nice levels from 0 instead of 2.
+	519716-at__use_nice_levels_starting_from_0
