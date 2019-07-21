@@ -203,3 +203,4 @@ at 3.1.23 (2018-07-24):
 at 3.1.24~WIP
   Jose M Calhariz
 	Print time of new job before the input of the commands, Closes #863045
+	Do not drop seconds on -t option, Closes #792040
