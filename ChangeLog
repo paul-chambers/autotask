@@ -205,4 +205,5 @@ at 3.1.24~WIP
 	Print time of new job before the input of the commands, Closes #863045
 	Do not drop seconds on -t option, Closes #792040
 	Start using nice levels from 0 instead of 2. Closes #519716
+        Correctly handle DST when specifying a UTC time. Closes #364975
 
