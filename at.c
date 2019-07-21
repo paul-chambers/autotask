@@ -866,8 +866,6 @@ main(int argc, char **argv)
 		fprintf(stderr, "invalid date format: %s\n", optarg);
 		exit(EXIT_FAILURE);
 	    }
-	    /* drop seconds */
-	    timer -= timer % 60;
 	    break;
 
 	default:
