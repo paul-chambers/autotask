@@ -127,6 +127,7 @@ char atfile[] = ATJOB_DIR "/12345678901234";
 char *atinput = (char *) 0;	/* where to get input from */
 char atqueue = 0;		/* which queue to examine for jobs (atq) */
 char atverify = 0;		/* verify time instead of queuing job */
+char *mail_rcpt = (char *) 0;   /* user to send mail to */
 
 /* Function declarations */
 
@@ -352,22 +353,36 @@ writefile(time_t runtimer, char queue)
     if ((fp = fdopen(fd, "w")) == NULL)
 	panic("Cannot reopen atjob file");
 
-    /* Get the userid to mail to, first by trying getlogin(), which reads
-     * /var/run/utmp, then from LOGNAME, finally from getpwuid().
-     */
-    mailname = getlogin();
-    if (mailname == NULL)
-	mailname = getenv("LOGNAME");
-    if (mailname == NULL || mailname[0] == '\0' || getpwnam(mailname) == NULL) {
-	pass_entry = getpwuid(real_uid);
-	if (pass_entry != NULL)
-	    mailname = pass_entry->pw_name;
+    if (mail_rcpt != NULL)
+        /* If the userid to mail to has been set on the command-line, then
+         * validate the user and continue
+         */
+        if (getpwnam(mail_rcpt) != NULL)
+            mailname = mail_rcpt;
+        else {
+            char msg[80];
+            snprintf(msg, sizeof(msg), "Cannot find username %s", mail_rcpt);
+            panic(msg);
+        }
+    else {
+        /* Get the userid to mail to, first by trying getlogin(), which reads
+         * /var/run/utmp, then from LOGNAME, finally from getpwuid().
+         */
+        mailname = getlogin();
+        if (mailname == NULL)
+            mailname = getenv("LOGNAME");
+        if (mailname == NULL || mailname[0] == '\0' || getpwnam(mailname) == NULL) {
+            pass_entry = getpwuid(real_uid);
+            if (pass_entry != NULL)
+	        mailname = pass_entry->pw_name;
+        }
     }
 
     if ((mailname == NULL) || (mailname[0] == '\0')
 	|| (strlen(mailname) > mailsize) ) {
 	panic("Cannot find username to mail output to");
     }
+
     if (atinput != (char *) NULL) {
 	fpin = freopen(atinput, "r", stdin);
 	if (fpin == NULL)
@@ -479,6 +494,11 @@ writefile(time_t runtimer, char queue)
 
     istty = isatty(fileno(stdin));
     if (istty) {
+	runtime = localtime(&runtimer);
+
+	strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
+	fprintf(stderr, "at %s\n", timestr);
+
 	fprintf(stderr, "at> ");
 	fflush(stderr);
     }
@@ -512,6 +532,7 @@ writefile(time_t runtimer, char queue)
 
     close(fd2);
 
+    /* This line maybe superfluous after commit 11cb731bb560eb7bff4889c5528d5f776606b0d3 */
     runtime = localtime(&runtimer);
 
     strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
@@ -749,7 +770,7 @@ main(int argc, char **argv)
     char *pgm;
 
     int program = AT;		/* our default program */
-    char *options = "q:f:MmbvlrdhVct:";	/* default options for at */
+    char *options = "q:f:Mmu:bvlrdhVct:";	/* default options for at */
     int disp_version = 0;
     time_t timer = 0;
     struct passwd *pwe;
@@ -806,6 +827,10 @@ main(int argc, char **argv)
 	    send_mail = -1;
 	    break;
 
+	case 'u':               /* send mail to specific user */
+	    mail_rcpt = optarg;
+	    break;
+
 	case 'f':
 	    atinput = optarg;
 	    break;
@@ -860,8 +885,6 @@ main(int argc, char **argv)
 		fprintf(stderr, "invalid date format: %s\n", optarg);
 		exit(EXIT_FAILURE);
 	    }
-	    /* drop seconds */
-	    timer -= timer % 60;
 	    break;
 
 	default:

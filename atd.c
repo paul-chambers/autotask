@@ -494,7 +494,7 @@ run_file(const char *filename, uid_t uid, gid_t gid)
 
 	PRIV_START
 
-	    nice((tolower((int) queue) - 'a' + 1) * 2);
+	    nice((tolower((int) queue) - 'a') * 2);
 
 #ifdef WITH_SELINUX
 	    if (selinux_enabled > 0) {
@@ -674,10 +674,10 @@ run_loop()
 	/* Skip lock files */
 	if (queue == '=') {
             /* FIXME: calhariz */
-            /* I think the following code is broken, but commenting
-               may haven unknow side effects.  Make a release and see
+            /* I think the following code is broken, but commenting it
+               may cause unknow side effects.  Make a release and see
                in the wild how it works. For more information see:
-               https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=818508/*
+               https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=818508 */
 
 	    /* if ((buf.st_nlink == 1) && (run_time + CHECK_INTERVAL <= now)) { */
 	    /*     /\* Remove stale lockfile FIXME: lock the lockfile, if you fail, it's still in use. *\/ */

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "panic.h"
 #include "parsetime.h"
 #include "panic.h"
 
@@ -10,6 +11,7 @@
 
 struct tm exectm;
 static int isgmt;
+static char *tz = NULL;
 static int yearspec;
 static int time_only;
 
@@ -170,6 +172,12 @@ am_pm		: AM
 timezone_name	: UTC
 		    {
 			isgmt = 1;
+			if (getenv("TZ")) {
+			    tz = (char *) malloc(strlen(getenv("TZ")) + 1);
+			    strcpy(tz, getenv("TZ"));
+			}
+			if (setenv("TZ", "UTC0", 1) == -1)
+			    panic("Virtual memory exhausted");
 		    }
 		;
 
@@ -502,9 +510,13 @@ parsetime(time_t currtime, int argc, char **argv)
 	if (exectime == (time_t)-1)
 	    return 0;
 	if (isgmt) {
-	    exectime -= timezone;
-	    if (currtm.tm_isdst && !exectm.tm_isdst)
-		exectime -= 3600;
+	    if (tz) {
+		if (setenv("TZ", tz, 1) == -1)
+		    panic("Virtual memory exhausted");
+		free(tz);
+	    }
+	    else
+		unsetenv("TZ");
 	}
 	if (exectime < currtime)
 		panic("refusing to create job destined in the past");
