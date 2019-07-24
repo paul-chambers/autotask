@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "at.h"
 #include "panic.h"
 #include "parsetime.h"
 #include "panic.h"
@@ -174,7 +173,7 @@ timezone_name	: UTC
 		    {
 			isgmt = 1;
 			if (getenv("TZ")) {
-			    tz = (char *) mymalloc(strlen(getenv("TZ")) + 1);
+			    tz = (char *) malloc(strlen(getenv("TZ")) + 1);
 			    strcpy(tz, getenv("TZ"));
 			}
 			if (setenv("TZ", "UTC0", 1) == -1)
