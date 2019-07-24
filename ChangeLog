@@ -199,3 +199,7 @@ at 3.1.22 (2018-07-24):
 at 3.1.23 (2018-07-24):
   Jose M Calhariz
 	Finalised script to release software.
+
+at 3.1.24~WIP :
+  Gerhard Poul:
+	Add flag to send email to other user.
