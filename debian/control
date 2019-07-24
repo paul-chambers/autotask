@@ -16,6 +16,7 @@ Build-Depends: autotools-dev,
 Vcs-Browser: https://salsa.debian.org/debian/at
 Vcs-Git: https://salsa.debian.org/debian/at.git -b debian
 Homepage: http://blog.calhariz.com
+Rules-Requires-Root: binary-targets
 
 
 Package: at
