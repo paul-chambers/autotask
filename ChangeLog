@@ -207,5 +207,5 @@ at 3.2.0~WIP
 	Start using nice levels from 0 instead of 2. Closes #519716
         Correctly handle DST when specifying a UTC time. Closes #364975
   Gerhard Poul:
-	Add flag to send email to other user.
+	Add flag to send email to other user. MR 5
 
