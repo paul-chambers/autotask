@@ -353,37 +353,36 @@ writefile(time_t runtimer, char queue)
     if ((fp = fdopen(fd, "w")) == NULL)
 	panic("Cannot reopen atjob file");
 
-    /* If the userid to mail to has been set on the command-line, then
-     * validate the user and continue
-     */
-    if (mail_rcpt != NULL) {
-        mailname = getlogin();
+    if (mail_rcpt != NULL)
+        /* If the userid to mail to has been set on the command-line, then
+         * validate the user and continue
+         */
         if (getpwnam(mail_rcpt) != NULL)
             mailname = mail_rcpt;
         else {
             char msg[80];
             snprintf(msg, sizeof(msg), "Cannot find username %s", mail_rcpt);
             panic(msg);
-	}
-    }
-
-    /* Get the userid to mail to, first by trying getlogin(), which reads
-     * /var/run/utmp, then from LOGNAME, finally from getpwuid().
-     */
-    if (mail_rcpt == NULL)
+        }
+    else {
+        /* Get the userid to mail to, first by trying getlogin(), which reads
+         * /var/run/utmp, then from LOGNAME, finally from getpwuid().
+         */
         mailname = getlogin();
-    if (mailname == NULL)
-	mailname = getenv("LOGNAME");
-    if (mailname == NULL || mailname[0] == '\0' || getpwnam(mailname) == NULL) {
-	pass_entry = getpwuid(real_uid);
-	if (pass_entry != NULL)
-	    mailname = pass_entry->pw_name;
+        if (mailname == NULL)
+            mailname = getenv("LOGNAME");
+        if (mailname == NULL || mailname[0] == '\0' || getpwnam(mailname) == NULL) {
+            pass_entry = getpwuid(real_uid);
+            if (pass_entry != NULL)
+	        mailname = pass_entry->pw_name;
+        }
     }
 
     if ((mailname == NULL) || (mailname[0] == '\0')
 	|| (strlen(mailname) > mailsize) ) {
 	panic("Cannot find username to mail output to");
     }
+
     if (atinput != (char *) NULL) {
 	fpin = freopen(atinput, "r", stdin);
 	if (fpin == NULL)
