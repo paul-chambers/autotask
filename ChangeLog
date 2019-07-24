@@ -206,4 +206,6 @@ at 3.1.24~WIP
 	Do not drop seconds on -t option, Closes #792040
 	Start using nice levels from 0 instead of 2. Closes #519716
         Correctly handle DST when specifying a UTC time. Closes #364975
+  Gerhard Poul:
+	Add flag to send email to other user.
 
