@@ -2,7 +2,8 @@ at (3.2.0-1~WIP+1) UNRELEASED; urgency=medium
 
   * New release 3.2.0:
     * Jose M Calhariz
-      - Print time of new job before the input of the commands, (Closes: #863045)
+      - Print time of new job before the input of the commands,
+        (Closes: #863045)
       - Do not drop seconds on -t option, (Closes: #792040)
       - Start using nice levels from 0 instead of 2. (Closes: #519716)
       - Correctly handle DST when specifying a UTC time. (Closes: #364975)
@@ -13,7 +14,7 @@ at (3.2.0-1~WIP+1) UNRELEASED; urgency=medium
   * Add public PGP of upstream aka myself.
   * Update debian/watch.
 
- -- Jose M Calhariz <calhariz@debian.org>  Fri, 26 Jul 2019 15:07:50 +0100
+ -- Jose M Calhariz <calhariz@debian.org>  Fri, 26 Jul 2019 15:18:32 +0100
 
 at (3.1.23-1) unstable; urgency=medium
 
