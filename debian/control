@@ -3,7 +3,7 @@ Section: admin
 Priority: standard
 Maintainer: Jose M Calhariz <calhariz@debian.org>
 Uploaders: Ansgar Burchardt <ansgar@debian.org>,
-Standards-Version: 3.9.8
+Standards-Version: 4.3.0
 Build-Depends: autotools-dev,
                bison,
                debhelper (>= 9.20160709),
