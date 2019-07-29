@@ -80,6 +80,15 @@ AC_TYPE_PID_T
 AC_TYPE_SIZE_T
 AC_STRUCT_TM
 
+dnl Checks for macros.
+AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
+#include <time.h>
+#ifndef __isleap
+# error __isleap macro not defined
+#endif
+]])], [
+  AC_DEFINE(HAVE_ISLEAP, 1, [Define to 1 if libc provides __isleap macro])
+], [])
 
 dnl Checks for library functions.
 AC_FUNC_VPRINTF
