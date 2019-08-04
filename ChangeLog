@@ -209,7 +209,7 @@ at 3.2.0 (2019-07-24):
   Gerhard Poul:
 	Add flag to send email to other user. MR 5
 
-at 3.2.1~WIP+1
+at 3.2.1 (2019-08-04):
     Jose M Calhariz
 	Include config.h on parsetime.l, see
 	88a3bed41de234220f007c785e3aa45bd62446c6 for more info and
