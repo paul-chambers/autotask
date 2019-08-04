@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=$(grep AC_INIT configure.ac | cut -f 2 -d , | tr -d ")" | tr -d " ")
+VERSION=$(grep AC_INIT configure.ac | cut -f 2 -d , | tr -d ")" | tr -d " []")
 echo "Going to release version: $VERSION"
 echo "Press enter to continue:"
 read enter
