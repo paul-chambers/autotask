@@ -2,15 +2,20 @@ at (3.2.0-1~WIP+1) UNRELEASED; urgency=medium
 
   * New release 3.2.0:
     * Jose M Calhariz
-      - Print time of new job before the input of the commands, Closes #863045
-      - Do not drop seconds on -t option, Closes #792040
-      - Start using nice levels from 0 instead of 2. Closes #519716
-      - Correctly handle DST when specifying a UTC time. Closes #364975
+      - Print time of new job before the input of the commands,
+        (Closes: #863045)
+      - Do not drop seconds on -t option, (Closes: #792040)
+      - Start using nice levels from 0 instead of 2. (Closes: #519716)
+      - Correctly handle DST when specifying a UTC time. (Closes: #364975)
     * Gerhard Poul:
       - Add flag to send email to other user. MR 5
   * Clean patches directory.
+  * Update Build-Depends, silent lintian warning.
+  * Add public PGP of upstream aka myself.
+  * Update debian/watch.
+  * Bump Standards-Version to 4.3.0, no changes were made.
 
- -- Jose M Calhariz <calhariz@debian.org>  Thu, 25 Jul 2019 01:18:45 +0100
+ -- Jose M Calhariz <calhariz@debian.org>  Fri, 26 Jul 2019 15:33:11 +0100
 
 at (3.1.23-1) unstable; urgency=medium
 
