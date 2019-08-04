@@ -209,3 +209,10 @@ at 3.2.0 (2019-07-24):
   Gerhard Poul:
 	Add flag to send email to other user. MR 5
 
+at 3.2.1~WIP+1
+    Jose M Calhariz
+	Include config.h on parsetime.l, see
+	88a3bed41de234220f007c785e3aa45bd62446c6 for more info and
+	original author.
+	Check if libc provides __isleap() macro, see
+	02a0a98d94b24284177dad7747edbdc3088d63cd
