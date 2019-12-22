@@ -1,5 +1,6 @@
 at (3.2.0-1~WIP+1) UNRELEASED; urgency=medium
 
+  [ Jose M Calhariz ]
   * New release 3.2.0:
     * Jose M Calhariz
       - Print time of new job before the input of the commands,
@@ -15,6 +16,9 @@ at (3.2.0-1~WIP+1) UNRELEASED; urgency=medium
   * Update debian/watch.
   * Bump Standards-Version to 4.3.0, no changes were made.
 
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+
  -- Jose M Calhariz <calhariz@debian.org>  Fri, 26 Jul 2019 15:33:11 +0100
 
 at (3.1.23-1) unstable; urgency=medium
@@ -29,7 +33,7 @@ at (3.1.23-1) unstable; urgency=medium
     - On reboot remove stale jobs (Closes: #885891).
     - Some fixes on the manual pages (Closes: #897669), (Closes: #897670).
     - Remove no longer valid email from manpages (Closes: #883730).
-    
+
   * Drop patches accepted by upstream.
 
  -- Jose M Calhariz <calhariz@debian.org>  Tue, 24 Jul 2018 10:17:21 +0100
@@ -413,7 +417,7 @@ at (3.1.8-10) frozen unstable; urgency=high
   * Changed AC_FUNC_GETLOADAVG to AC_REPLACE_FUNCS(getloadavg) in
     configure.in since it introduces a spurious depencency on libelfg0
     whenever that package is installed on the build machine.
-    (closes: Bug#61295). 
+    (closes: Bug#61295).
   * configure.in: rewrote directory tests such that configure fails due to
     a missing SPOOLDIR only when --with-jobdir or --with-atspool doesn't
     specify an explicit path.
@@ -548,7 +552,7 @@ at (3.1.8-1) stable; urgency=low
   * Fix date parsing bug with February
   * Misc. manpage changes
  -- Thomas Koenig <ig25@rz.uni-karlsruhe.de>  Sun, 28 Sep 1997 21:33:44 +0200
-   
+
 at (3.1.7-6) unstable; urgency=high
   * ../at_3.1.7-4_i386.deb
   *
@@ -573,7 +577,7 @@ at (3.1.7-4) unstable; urgency=high
 
 at (3.1.7-3) stable; urgency=low
   * ../at_3.1.7-3_i386.deb
-  * 
+  *
   * libc5 version
   * removed spurious dependendy on libelf0
  -- Thomas Koenig <ig25@rz.uni-karlsruhe.de>  Tue, 17 Jun 1997 18:01:33 +0200
@@ -596,7 +600,7 @@ at (3.1.6-1) unstable frozen; urgency=medium
 
 at (3.1.5-2) unstable frozen; urgency=high
 
-  * 
+  *
   * ../at_3.1.5-2_i386.deb
   * Also check for /etc/suid.conf when calling suidregister
  -- Thomas Koenig <ig25@rz.uni-karlsruhe.de>  Wed, 7 May 1997 11:14:49 +0200
