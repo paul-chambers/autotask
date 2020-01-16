@@ -66,7 +66,7 @@ Boston, MA  02110-1301  USA */
 
 /* This should always be first.  */
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "lisp.h"
