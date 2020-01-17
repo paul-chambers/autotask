@@ -69,8 +69,7 @@ Boston, MA  02110-1301  USA */
 #include <config.h>
 #endif
 
-#include "lisp.h"
-#include "sysfile.h" /* for encapsulated open, close, read, write */
+#include <fcntl.h> /* for encapsulated open, close, read, write */
 
 #ifndef HAVE_GETLOADAVG
 
