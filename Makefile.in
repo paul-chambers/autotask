@@ -85,6 +85,8 @@ y.tab.c y.tab.h: parsetime.y
 lex.yy.c: parsetime.l
 	$(LEX) -i parsetime.l
 
+parsetime.l: y.tab.h
+
 atd.service: atd.service.in
 	cat $< | sed -e 's![@]sbindir[@]!$(sbindir)!g' | sed -e 's![@]atjobdir[@]!$(atjobdir)!g' > $@
 
@@ -177,3 +179,4 @@ perm.o: perm.c config.h privs.h at.h
 posixtm.o: posixtm.c posixtm.h
 daemon.o: daemon.c config.h daemon.h privs.h
 getloadavg.o: getloadavg.c config.h getloadavg.h
+y.tab.o: y.tab.c y.tab.h
