@@ -19,6 +19,7 @@ at (3.2.0-1~WIP+1) UNRELEASED; urgency=medium
   [ Debian Janitor ]
   * Trim trailing whitespace.
   * Use secure copyright file specification URI.
+  * Wrap long lines in changelog entries: 3.1.9.
 
  -- Jose M Calhariz <calhariz@debian.org>  Fri, 26 Jul 2019 15:33:11 +0100
 
@@ -335,11 +336,13 @@ at (3.1.9) unstable; urgency=low
   * Use invoke-rc.d in maintainer scripts (closes: #162677)
   * Allow usernames > 8 characters.  Don't write out usernames with at that
     atd will later call corrupt (closes: #17561)
-  * Run as user daemon, rather than root (from 3.1.8-11ubuntu3) (closes: #251058)
+  * Run as user daemon, rather than root (from 3.1.8-11ubuntu3) (closes:
+    #251058)
     + Derooted /usr/bin/at.
     + at.c:
       - Keep real uid, only switch to daemon gid when unlinking files (the
-        directory is daemon-group writeable, but the job files are owned by user).
+        directory is daemon-group writeable, but the job files are owned by
+        user).
       - Instead of creating the job file and then fchown()'ing it (which does
         not work when running as non-root), change to the real gid when
         creating the file.
