@@ -122,17 +122,22 @@ daemon_setup()
     /* Set up standard daemon environment */
     pid_t pid;
     mode_t old_umask;
-    int fd;
+    int fd, devnull;
     FILE *fp;
 
     if (!daemon_debug) {
-	close(0);
-	close(1);
-	close(2);
-	if ((open("/dev/null", O_RDWR) != 0) ||
-	    (open("/dev/null", O_RDWR) != 1) ||
-	    (open("/dev/null", O_RDWR) != 2)) {
+	devnull = open("/dev/null", O_RDWR);
+	if (devnull == -1) {
 	    perr("Error redirecting I/O");
+	}
+
+	if ((dup2(devnull, 0) == -1) ||
+	    (dup2(devnull, 1) == -1) ||
+	    (dup2(devnull, 2) == -1)) {
+	    close(devnull);
+	    perr("Error redirecting I/O");
+	} else {
+	    close(devnull);
 	}
     }
 
@@ -208,6 +213,8 @@ daemon_setup()
     fcntl(fd, F_SETFD, FD_CLOEXEC);
     PRIV_END
 
+    /* See the above comment. */
+    /* coverity[leaked_storage: FALSE] */
     return;
 }
 
