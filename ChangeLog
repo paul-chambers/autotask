@@ -216,3 +216,7 @@ at 3.2.1 (2019-08-04):
 	original author.
 	Check if libc provides __isleap() macro, see
 	02a0a98d94b24284177dad7747edbdc3088d63cd
+
+at 3.2.2 (2021-04-25):
+  Jose M Calhariz
+	Add helper script batch-job
