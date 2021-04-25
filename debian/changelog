@@ -1,4 +1,4 @@
-at (3.2.2-1~WIP+1) UNRELEASED; urgency=medium
+at (3.2.2-1) experimental; urgency=medium
 
   * New release 3.2.2
     * Jose M Calhariz
@@ -24,8 +24,9 @@ at (3.2.2-1~WIP+1) UNRELEASED; urgency=medium
   * Add public PGP of upstream aka myself.
   * Update debian/watch.
   * Bump Standards-Version to 4.3.0, no changes were made.
+  * Acknowledge the NMU and incorporated the changes.
 
- -- Jose M Calhariz <calhariz@debian.org>  Sun, 25 Apr 2021 16:36:52 +0100
+ -- Jose M Calhariz <calhariz@debian.org>  Sun, 25 Apr 2021 18:36:34 +0100
 
 at (3.1.23-1) unstable; urgency=medium
 
