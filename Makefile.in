@@ -9,6 +9,8 @@ bindir		= @bindir@
 sbindir		= @sbindir@
 mandir		= @mandir@
 libdir		= @libdir@
+datadir		= @datadir@
+atdatadir	= $(datadir)/at
 man1dir		= $(mandir)/man1
 man5dir		= $(mandir)/man5
 man8dir		= $(mandir)/man8
@@ -96,6 +98,7 @@ install: all
 	$(INSTALL) -g root -o root -m 755 -d $(IROOT)$(etcdir)
 	$(INSTALL) -g root -o root -m 755 -d $(IROOT)$(bindir)
 	$(INSTALL) -g root -o root -m 755 -d $(IROOT)$(sbindir)
+	$(INSTALL) -g root -o root -m 755 -d $(IROOT)$(atdatadir)
 	$(INSTALL) -g root -o root -m 755 -d $(IROOT)$(docdir)
 	$(INSTALL) -g root -o root -m 755 -d $(IROOT)$(atdocdir)
 	$(INSTALL) -g $(DAEMON_GROUPNAME) -o $(DAEMON_USERNAME) -m 755 -d $(IROOT)$(ATSPOOL_DIR) $(IROOT)$(ATJOB_DIR)
@@ -108,6 +111,7 @@ install: all
 	$(LN_S) -f at $(IROOT)$(bindir)/atq
 	$(LN_S) -f at $(IROOT)$(bindir)/atrm
 	$(INSTALL) -g root -o root -m 755 batch $(IROOT)$(bindir)
+	$(INSTALL) -g root -o root -m 755 batch-job $(IROOT)$(atdatadir)
 	$(INSTALL) -d -o root -g root -m 755 $(IROOT)$(man1dir)
 	$(INSTALL) -d -o root -g root -m 755 $(IROOT)$(man5dir)
 	$(INSTALL) -d -o root -g root -m 755 $(IROOT)$(man8dir)
