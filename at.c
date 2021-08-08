@@ -640,6 +640,9 @@ list_jobs(void)
 	else
 	  printf("%ld\t%s %c\n", jobno, timestr, queue);
     }
+
+    closedir(spool);
+
     PRIV_END
 }
 
@@ -722,6 +725,7 @@ process_jobs(int argc, char **argv, int what)
 				putchar(ch);
 			    }
 			    done = 1;
+			    fclose(fp);
 			}
 			else {
 			    perr("Cannot open %.500s", dirent->d_name);
