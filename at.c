@@ -545,17 +545,27 @@ writefile(time_t runtimer, char queue)
 	return;
     }
 
-    if (fstat(fd, &statbuf) == -1)
+    if (fstat(fd, &statbuf) == -1) {
+	close(fd);
 	return;
+    }
     if ((statbuf.st_uid != 0) || !S_ISREG(statbuf.st_mode) ||
-	(statbuf.st_mode & (S_IWGRP | S_IWOTH)))
+	(statbuf.st_mode & (S_IWGRP | S_IWOTH))) {
+	close(fd);
 	return;
+    }
 
     fp = fdopen(fd, "r");
-    if (fp == NULL)
+    if (fp == NULL) {
+	close(fd);
 	return;
-    if (fscanf(fp, "%d", &pid) != 1)
+    }
+    if (fscanf(fp, "%d", &pid) != 1) {
+	fclose(fp);
 	return;
+    } else {
+	fclose(fp);
+    }
 
     kill_errno = 0;
 
@@ -726,6 +736,7 @@ process_jobs(int argc, char **argv, int what)
 			    }
 			    done = 1;
 			    fclose(fp);
+			    fp = NULL;
 			}
 			else {
 			    perr("Cannot open %.500s", dirent->d_name);
