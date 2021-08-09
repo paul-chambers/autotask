@@ -220,3 +220,17 @@ at 3.2.1 (2019-08-04):
 at 3.2.2 (2021-04-25):
   Jose M Calhariz
 	Add helper script batch-job
+
+at 3.2.3~WIP.1 (2021-08-08):
+  Giulio Benetti
+	MR14 - Makefile: fix parallel build failure
+	MR12 - Makefile.in: use DESTDIR instead of IROOT
+	MR11 - Use quotes to include config.h since it is a local file.
+	MR8 - .gitignore: add all files produced during building
+	MR13 - getloadavg: use standard fcntl.h for open(), close(), read() and write()
+  Danilo Spinella
+	MR16 - Fix leaks in at.c
+	MR19 - Avoid sleeping when SIGHUP has been received
+	MR17 - Set PIDDIR to /run if exists on the system
+  Jan Staněk
+	MR15 - Address issues raised by static analysis
