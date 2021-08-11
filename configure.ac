@@ -17,8 +17,8 @@ AC_SUBST(VERSION)
 AC_CANONICAL_HOST
 
 dnl Checks for programs.
-
-AC_PROG_CC
+AC_USE_SYSTEM_EXTENSIONS
+AC_PROG_CC_STDC
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_YACC
@@ -52,6 +52,7 @@ AC_CHECK_LIB(fl,yywrap,
                   [Define to 1 if we need to provide our own yywrap()])
 )
 
+AC_CHECK_FUNCS([__secure_getenv secure_getenv])
 dnl Checks for header files.
 AC_HEADER_DIRENT
 AC_HEADER_STDC
