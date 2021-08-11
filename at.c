@@ -142,7 +142,9 @@ static void sigc(int signo);
 static void alarmc(int signo);
 static char *cwdname(void);
 static void writefile(time_t runtimer, char queue);
-static void list_jobs(void);
+static void list_jobs(long *, int);
+static int in_job_list(long, long *, int);
+static long *get_job_list(int, char *[], int *);
 static char *at_getenv(char* env);
 
 /* Signal catching functions */
@@ -605,8 +607,20 @@ writefile(time_t runtimer, char queue)
     return;
 }
 
+static int
+in_job_list(long job, long *joblist, int len)
+{
+    int i;
+
+    for (i = 0; i < len; i++)
+        if (job == joblist[i])
+            return 1;
+
+    return 0;
+}
+
 static void
-list_jobs(void)
+list_jobs(long *joblist, int len)
 {
     /* List all a user's jobs in the queue, by looping through ATJOB_DIR, 
      * or everybody's if we are root
@@ -643,6 +657,10 @@ list_jobs(void)
 	    continue;
 
 	if (sscanf(dirent->d_name, "%c%5lx%8lx", &queue, &jobno, &ctm) != 3)
+	    continue;
+
+	/* If jobs are given, only list those jobs */
+	if (joblist && !in_job_list(jobno, joblist, len))
 	    continue;
 
 	if (atqueue && (queue != atqueue))
@@ -771,6 +789,29 @@ process_jobs(int argc, char **argv, int what)
     return rc;
 }				/* delete_jobs */
 
+static long *
+get_job_list(int argc, char *argv[], int *joblen)
+{
+    int i, len;
+    long *joblist;
+    char *ep;
+
+    joblist = NULL;
+    len = argc;
+    if (len > 0) {
+	joblist = (long *) mymalloc(len * sizeof(*joblist));
+	for (i = 0; i < argc; i++) {
+	    errno = 0;
+	    if ((joblist[i] = strtol(argv[i], &ep, 10)) < 0 ||
+		ep == argv[i] || *ep != '\0' || errno)
+		panic("invalid job number");
+        }
+    }
+
+    *joblen = len;
+    return joblist;
+}
+
 /* Global functions */
 
 void *
@@ -796,6 +837,8 @@ main(int argc, char **argv)
     char *options = "q:f:Mmu:bvlrdhVct:";	/* default options for at */
     int disp_version = 0;
     time_t timer = 0;
+    long *joblist = NULL;
+    int joblen = 0;
     struct passwd *pwe;
     struct group *ge;
 
@@ -939,8 +982,9 @@ main(int argc, char **argv)
     case ATQ:
 
 	REDUCE_PRIV(daemon_uid, daemon_gid)
-
-	    list_jobs();
+	    if (queue_set == 0)
+		joblist = get_job_list(argc - optind, argv + optind, &joblen);
+	    list_jobs(joblist, joblen);
 	break;
 
     case ATRM:
