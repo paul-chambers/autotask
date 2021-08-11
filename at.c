@@ -128,6 +128,7 @@ char *atinput = (char *) 0;	/* where to get input from */
 char atqueue = 0;		/* which queue to examine for jobs (atq) */
 char atverify = 0;		/* verify time instead of queuing job */
 char *mail_rcpt = (char *) 0;   /* user to send mail to */
+char *timeformat = TIMEFORMAT_POSIX;	/* time format (atq) */
 
 /* Function declarations */
 
@@ -535,7 +536,7 @@ writefile(time_t runtimer, char queue)
     /* This line maybe superfluous after commit 11cb731bb560eb7bff4889c5528d5f776606b0d3 */
     runtime = localtime(&runtimer);
 
-    strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
+    strftime(timestr, TIMESIZE, timeformat, runtime);
     fprintf(stderr, "job %ld at %s\n", jobno, timestr);
 
     /* Signal atd, if present. Usual precautions taken... */
@@ -643,7 +644,7 @@ list_jobs(void)
 	runtimer = 60 * (time_t) ctm;
 	runtime = localtime(&runtimer);
 
-	strftime(timestr, TIMESIZE, TIMEFORMAT_POSIX, runtime);
+	strftime(timestr, TIMESIZE, timeformat, runtime);
 
 	if ((pwd = getpwuid(buf.st_uid)))
 	  printf("%ld\t%s %c %s\n", jobno, timestr, queue, pwd->pw_name);
@@ -816,7 +817,7 @@ main(int argc, char **argv)
      */
     if (strcmp(pgm, "atq") == 0) {
 	program = ATQ;
-	options = "hq:V";
+	options = "hq:Vo:";
     } else if (strcmp(pgm, "atrm") == 0) {
 	program = ATRM;
 	options = "hV";
@@ -901,6 +902,10 @@ main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	    }
 	    break;
+
+	case 'o':
+	    timeformat = optarg;
+            break;
 
 	default:
 	    usage();

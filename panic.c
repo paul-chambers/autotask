@@ -95,7 +95,7 @@ usage(void)
     fprintf(stderr, "Usage: at [-V] [-q x] [-f file] [-u username] [-mMlbv] timespec ...\n"
             "       at [-V] [-q x] [-f file] [-u username] [-mMlbv] -t time\n"
     	    "       at -c job ...\n"
-	    "       atq [-V] [-q x]\n"
+	    "       atq [-V] [-q x] [-o timeformat]\n"
 	    "       at [ -rd ] job ...\n"
 	    "       atrm [-V] job ...\n"
 	    "       batch\n");
