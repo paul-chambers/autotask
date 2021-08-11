@@ -636,7 +636,7 @@ run_loop()
     if (stat(".", &buf) == -1)
 	perr("Cannot stat " ATJOB_DIR);
 
-    if (nothing_to_do && buf.st_mtime <= last_chg)
+    if (nothing_to_do && buf.st_mtime == last_chg)
 	return next_job;
     last_chg = buf.st_mtime;
 
