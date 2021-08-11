@@ -278,6 +278,12 @@ fi
 AC_SUBST(SELINUXLIB)
 AC_SUBST(WITH_SELINUX)
 
+dnl check for POSIX timer functions
+AC_SEARCH_LIBS([timer_create],[rt])
+AC_CHECK_FUNCS([timer_create])
+AC_SEARCH_LIBS([clock_gettime],[rt])
+AC_CHECK_FUNCS([clock_gettime])
+
 AC_MSG_CHECKING(groupname to run under)
 AC_ARG_WITH(daemon_groupname,
 [ --with-daemon_groupname=DAEMON_GROUPNAME	Groupname to run under (default daemon) ],
