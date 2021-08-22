@@ -97,6 +97,12 @@
 #define DEFAULT_QUEUE 'a'
 #define BATCH_QUEUE   'b'
 
+#ifndef HAVE_SECURE_GETENV
+#  ifdef HAVE___SECURE_GETENV
+#    define secure_getenv __secure_getenv
+#  endif
+#endif
+
 enum {
     ATQ, BATCH, ATRM, AT, CAT
 };				/* what program we want to run */
@@ -137,6 +143,7 @@ static void alarmc(int signo);
 static char *cwdname(void);
 static void writefile(time_t runtimer, char queue);
 static void list_jobs(void);
+static char *at_getenv(char* env);
 
 /* Signal catching functions */
 
@@ -371,7 +378,7 @@ writefile(time_t runtimer, char queue)
          */
         mailname = getlogin();
         if (mailname == NULL)
-            mailname = getenv("LOGNAME");
+            mailname = at_getenv("LOGNAME");
         if (mailname == NULL || mailname[0] == '\0' || getpwnam(mailname) == NULL) {
             pass_entry = getpwuid(real_uid);
             if (pass_entry != NULL)
@@ -1022,4 +1029,15 @@ main(int argc, char **argv)
     }
     exit(EXIT_SUCCESS);
 }
+
+#if defined (HAVE_SECURE_GETENV) || defined(HAVE___SECURE_GETENV)
+static
+char *at_getenv(char* env) {
+    return secure_getenv(env);
+}
+#else
+char *at_getenv(char* env) {
+    return getenv(env);
+}
+#endif
 
