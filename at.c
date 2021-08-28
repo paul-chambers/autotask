@@ -327,7 +327,7 @@ writefile(time_t runtimer, char queue)
 	 */
 	cmask = umask(S_IRUSR | S_IWUSR | S_IXUSR);
         seteuid(real_uid);
-	if ((fd = open(atfile, O_CREAT | O_EXCL | O_TRUNC | O_WRONLY, S_IRUSR)) == -1)
+	if ((fd = open(atfile, O_CREAT | O_EXCL | O_TRUNC | O_WRONLY | O_SYNC, S_IRUSR)) == -1)
 	    perr("Cannot create atjob file %.500s", atfile);
         seteuid(effective_uid);
 
