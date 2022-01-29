@@ -236,3 +236,23 @@ at 3.2.3 (2022-01-29):
 	MR17 - Set PIDDIR to /run if exists on the system
   Jan Staněk
 	MR15 - Address issues raised by static analysis
+
+at 3.2.4 (2022-01-29):
+  Danillo Spinella
+	Use POSIX timers to wait on next job
+	Add timeformat argument in at.c
+	Use secure_getenv when available
+	Add O_SYNC option when opening atjob file
+	Fix mtime check in atd.c
+	  https://bugzilla.suse.com/show_bug.cgi?id=680113
+	MR18 - Use POSIX timers to wait on next job
+	  Upstreaming openSUSE patch: https://build.opensuse.org/package/view_file/Base:System/at/at-3.1.14-usePOSIXtimers.patch?expand=0&rev=d84f9fe442d5b5cce89c22d52581dfa4
+	MR21 - Add timeformat argument in at.c
+	  Upstreaming openSUSE patch: https://build.opensuse.org/package/view_file/Base:System/at/at-atq-timeformat.patch?expand=1
+	MR23 - Use secure_getenv when available
+	  https://build.opensuse.org/package/view_file/Base:System/at/at-secure_getenv.patch?expand=1
+	MR25 - Fix mtime check in atd.c
+	  https://bugzilla.suse.com/show_bug.cgi?id=680113
+	MR22 - Print the selected jobs in atq
+	  https://build.opensuse.org/package/view_file/Base:System/at/at-3.1.14-joblist.patch?expand=1
+	MR24 - Add O_SYNC option when opening atjob file
