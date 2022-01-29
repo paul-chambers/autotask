@@ -1,4 +1,4 @@
-This is version of 3.1.x of at, for running commands at a
+This is version of 3.2.x of at, for running commands at a
 specified time.  To install, do a
 
 $ ./configure
