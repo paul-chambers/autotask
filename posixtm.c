@@ -23,7 +23,7 @@
 /* Yacc-based version written by Jim Kingdon and David MacKenzie.
    Rewritten by Jim Meyering.  */
 
-#include <config.h>
+#include "config.h"
 
 #include "posixtm.h"
 

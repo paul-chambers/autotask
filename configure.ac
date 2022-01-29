@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT([at],[3.2.2])
+AC_INIT([at],[3.2.3])
 AC_CONFIG_SRCDIR(at.c)
 
 AC_PREFIX_DEFAULT(/usr)
@@ -139,7 +139,9 @@ AC_ARG_WITH(systemdsystemunitdir,
 AC_SUBST(systemdsystemunitdir, [$with_systemdsystemunitdir])
 
 AC_MSG_CHECKING(location of pid file)
-if test -d /var/run ; then
+if test -d /run ; then
+    PIDDIR=/run
+elif test -d /var/run ; then
     PIDDIR=/var/run
 elif test -d /usr/run ; then
     PIDDIR=/usr/run
