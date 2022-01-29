@@ -1,0 +1,3 @@
+Tests: basic-usage
+Depends: @
+Restrictions: allow-stderr
