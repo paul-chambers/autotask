@@ -11,4 +11,4 @@ into comprehensive chunks if your patch is longer than a dozen lines.
 If your patch does more that one thing, split it too.
 
 If you want to start working on a new feature please open PR at
-https://sala.debian.org or a bug report at https://bugs.debian.org.
+https://salsa.debian.org or a bug report at https://bugs.debian.org.
