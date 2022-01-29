@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT([at],[3.2.3])
+AC_INIT([at],[3.2.4])
 AC_CONFIG_SRCDIR(at.c)
 
 AC_PREFIX_DEFAULT(/usr)
@@ -17,8 +17,8 @@ AC_SUBST(VERSION)
 AC_CANONICAL_HOST
 
 dnl Checks for programs.
-
-AC_PROG_CC
+AC_USE_SYSTEM_EXTENSIONS
+AC_PROG_CC_STDC
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_YACC
@@ -52,6 +52,7 @@ AC_CHECK_LIB(fl,yywrap,
                   [Define to 1 if we need to provide our own yywrap()])
 )
 
+AC_CHECK_FUNCS([__secure_getenv secure_getenv])
 dnl Checks for header files.
 AC_HEADER_DIRENT
 AC_HEADER_STDC
@@ -277,6 +278,12 @@ if test "x$with_selinux" != xno; then
 fi
 AC_SUBST(SELINUXLIB)
 AC_SUBST(WITH_SELINUX)
+
+dnl check for POSIX timer functions
+AC_SEARCH_LIBS([timer_create],[rt])
+AC_CHECK_FUNCS([timer_create])
+AC_SEARCH_LIBS([clock_gettime],[rt])
+AC_CHECK_FUNCS([clock_gettime])
 
 AC_MSG_CHECKING(groupname to run under)
 AC_ARG_WITH(daemon_groupname,

@@ -636,7 +636,7 @@ run_loop()
     if (stat(".", &buf) == -1)
 	perr("Cannot stat " ATJOB_DIR);
 
-    if (nothing_to_do && buf.st_mtime <= last_chg)
+    if (nothing_to_do && buf.st_mtime == last_chg)
 	return next_job;
     last_chg = buf.st_mtime;
 
@@ -773,6 +773,54 @@ run_loop()
     return next_job;
 }
 
+#ifdef HAVE_CLOCK_GETTIME
+timer_t timer;
+struct itimerspec timeout;
+
+void timer_setup()
+{
+    struct sigevent sev;
+
+    sev.sigev_notify = SIGEV_SIGNAL;
+    sev.sigev_signo = SIGHUP;
+    sev.sigev_value.sival_ptr = &timer;
+
+    memset(&timeout, 0, sizeof(timeout));
+
+    if (timer_create(CLOCK_REALTIME, &sev, &timer) < 0)
+           pabort("unable to create timer");
+}
+
+time_t atd_gettime()
+{
+    struct timespec curtime;
+
+    clock_gettime(CLOCK_REALTIME, &curtime);
+
+    return curtime.tv_sec;
+}
+
+void atd_setalarm(time_t next)
+{
+    timeout.it_value.tv_sec = next;
+    timer_settime(timer, TIMER_ABSTIME, &timeout, NULL);
+    pause();
+}
+#else
+void timer_setup()
+{
+}
+
+time_t atd_gettime()
+{
+    return time(NULL);
+}
+
+void atd_setalarm(time_t next)
+{
+    sleep(next - atd_gettime());
+}
+#endif
 /* Global functions */
 
 int
@@ -878,7 +926,7 @@ main(int argc, char *argv[])
     sigaction(SIGCHLD, &act, NULL);
 
     if (!run_as_daemon) {
-	now = time(NULL);
+	now = atd_gettime();
 	run_loop();
 	exit(EXIT_SUCCESS);
     }
@@ -901,13 +949,14 @@ main(int argc, char *argv[])
     act.sa_handler = set_term;
     sigaction(SIGINT, &act, NULL);
 
+    timer_setup();
     daemon_setup();
 
     do {
 	now = time(NULL);
 	next_invocation = run_loop();
 	if ((next_invocation > now) && (!hupped)) {
-	    sleep(next_invocation - now);
+    	    atd_setalarm(next_invocation);
 	}
 	hupped = 0;
     } while (!term_signal);
