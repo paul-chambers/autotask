@@ -1,0 +1,61 @@
+#!/bin/bash
+
+#################################################
+##                                             ##
+## Basic usage of `at` to create a file and    ##
+## also take in account the queue, using atq.  ##
+##                                             ##
+## Written by:                                 ##
+## Utkarsh Gupta <utkarsh.gupta@canonical.com> ##
+## License: GPL-2+                             ##
+##                                             ##
+#################################################
+
+set -ex
+
+TMPFILE=at.$RANDOM
+WORKDIR=$(mktemp -d)
+trap "rm -rf $WORKDIR" 0 INT QUIT ABRT PIPE TERM
+
+JOBS_BEFORE=$(atq | wc -l)
+
+# use at command to schedule a job.
+echo "echo `date` > ${WORKDIR}/${TMPFILE}" | at now + 1 minute
+
+sleep 2
+
+# check if the file is created at the wrong
+# time, that is, 58 seconds earlier.
+if test -f "$TMPFILE"
+then
+  echo "$TMPFILE already exits but it really shouldn't."
+  exit 1
+else
+  echo "OK, $TMPFILE doesn't exist yet; expected.."
+fi
+
+# check atq to see the queued jobs.
+# there should be a one new job.
+JOBS_AFTER=$(atq | wc -l)
+
+if [[ $((JOBS_AFTER - JOBS_BEFORE)) -eq 1 ]]
+then
+  echo "OK, 1 new queued job exists.."
+else
+  echo "No new queued job found."
+  exit 1
+fi
+
+sleep 58
+
+# grep the content of the file to verify that
+# everything is in order.
+if grep -Fq "UTC" $WORKDIR/$TMPFILE
+then
+  echo "OK, $TMPFILE exists and everything looks in order.."
+else
+  echo "Either $TMPFILE doesn't exist or the content differs."
+  exit 1
+fi
+
+echo "OK; PASS."
