@@ -221,7 +221,9 @@ at 3.2.2 (2021-04-25):
   Jose M Calhariz
 	Add helper script batch-job
 
-at 3.2.3~WIP.1 (2021-08-08):
+at 3.2.3 (2022-01-29):
+  Jose M Calhariz
+	Fix two typos on documentation
   Giulio Benetti
 	MR14 - Makefile: fix parallel build failure
 	MR12 - Makefile.in: use DESTDIR instead of IROOT
