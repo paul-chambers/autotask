@@ -256,3 +256,8 @@ at 3.2.4 (2022-01-29):
 	MR22 - Print the selected jobs in atq
 	  https://build.opensuse.org/package/view_file/Base:System/at/at-3.1.14-joblist.patch?expand=1
 	MR24 - Add O_SYNC option when opening atjob file
+
+at 3.2.5 (2022-02-05)
+  Vincent Lefevre
+	Fix: atd forgets to run a job in the queue
+	  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1004972
