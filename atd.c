@@ -904,7 +904,7 @@ main(int argc, char *argv[])
     daemon_setup();
 
     do {
-	now = atd_gettime();
+	now = time(NULL);
 	next_invocation = run_loop();
 	if ((next_invocation > now) && (!hupped)) {
 	    sleep(next_invocation - now);
