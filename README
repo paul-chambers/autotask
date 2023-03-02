@@ -30,6 +30,7 @@ found a bug in; run at -V to find out which one.
 
 The Homepage and place for news is at:
         http://blog.calhariz.com/tag/at
+	(or http://blog.calhariz.com/index.php/tag/at if that doesn't work)
 
 The latest source code and old relases are available at the git repository:
         https://salsa.debian.org/debian/at.git/
